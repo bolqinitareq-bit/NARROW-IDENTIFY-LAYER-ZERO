@@ -1,0 +1,43 @@
+LICENSE — Narrow Identity Engine Copyright © 2025
+Tarek Elbolkiny
+طارق البلقيني
+All Rights Reserved
+
+**Apache LicenseVersion 2.0, January 2004**
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+Narrow Ethical Use Clause (Mandatory
+Narrow Identity Engine may not be used for:
+
+- mass surveillance,
+- discrimination,
+- social scoring,
+- exploitation,
+- human rights violations,
+- or any system that harms human dignity.
+
+Any use violating these principles is strictly prohibited,
+even if otherwise permitted under the Apache License 2.0.
+
+Contributor RightsContributors retain rights to their own contributions.
+
+The core concept, architecture, identity model, and foundational design
+remain the intellectual property of the founder, Tarek Elbolkiny.
+
+Summary (for humans)You can use, modify, and build on Narrow,
+as long as you:
+
+1. Keep the founder’s attribution.
+2. Don’t remove or alter this license.
+3. Don’t use Narrow to harm people.
+4. Respect the ethical clause.
