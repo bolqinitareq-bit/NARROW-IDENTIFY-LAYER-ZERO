@@ -1,0 +1,54 @@
+{
+  "schema_id": "agent.capability-graph.v1",
+  "version": "v1",
+  "entity_type": "agent",
+
+  "fields": {
+    "capabilities": {
+      "type": "array",
+      "required": true,
+      "rules": {
+        "item_type": "string",
+        "description": "List of capabilities the agent can perform"
+      }
+    },
+
+    "dependencies": {
+      "type": "object",
+      "required": false,
+      "rules": {
+        "description": "Graph structure mapping capabilities to their prerequisites"
+      }
+    },
+
+    "constraints": {
+      "type": "object",
+      "required": false,
+      "rules": {
+        "description": "Optional constraints such as rate limits, safety boundaries, or resource limits"
+      }
+    },
+
+    "issued_by": {
+      "type": "string",
+      "required": true,
+      "rules": {
+        "description": "Identity root of the issuer"
+      }
+    },
+
+    "issued_at": {
+      "type": "number",
+      "required": true,
+      "rules": {
+        "description": "Unix timestamp"
+      }
+    }
+  },
+
+  "rules": {
+    "validation": {
+      "capabilities_not_empty": "capabilities array must contain at least one capability"
+    }
+  }
+}
