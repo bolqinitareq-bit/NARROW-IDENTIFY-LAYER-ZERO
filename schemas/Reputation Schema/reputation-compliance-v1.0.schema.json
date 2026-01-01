@@ -1,0 +1,69 @@
+{
+  "schema_id": "reputation.compliance.v1",
+  "version": "v1",
+  "entity_type": "human | device | agent | application",
+
+  "fields": {
+    "compliance_level": {
+      "type": "string",
+      "required": true,
+      "rules": {
+        "allowed_values": [
+          "high",
+          "medium",
+          "low",
+          "non-compliant"
+        ],
+        "description": "Compliance classification based on rules, policies, or standards"
+      }
+    },
+
+    "violations": {
+      "type": "array",
+      "required": false,
+      "rules": {
+        "item_type": "string",
+        "description": "List of violation codes or attestation IDs"
+      }
+    },
+
+    "evidence": {
+      "type": "array",
+      "required": false,
+      "rules": {
+        "item_type": "string",
+        "description": "Supporting evidence for compliance evaluation"
+      }
+    },
+
+    "context": {
+      "type": "string",
+      "required": false,
+      "rules": {
+        "description": "Domain or subsystem where compliance is evaluated"
+      }
+    },
+
+    "issued_by": {
+      "type": "string",
+      "required": true,
+      "rules": {
+        "description": "Identity root of the issuer"
+      }
+    },
+
+    "issued_at": {
+      "type": "number",
+      "required": true,
+      "rules": {
+        "description": "Unix timestamp"
+      }
+    }
+  },
+
+  "rules": {
+    "validation": {
+      "violations_format": "violations must be an array of strings if provided"
+    }
+  }
+}
