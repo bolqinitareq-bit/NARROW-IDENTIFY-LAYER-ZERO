@@ -1,0 +1,69 @@
+{
+  "schema_id": "agent.safety-profile.v1",
+  "version": "v1",
+  "entity_type": "agent",
+
+  "fields": {
+    "risk_level": {
+      "type": "string",
+      "required": true,
+      "rules": {
+        "allowed_values": [
+          "low",
+          "medium",
+          "high"
+        ],
+        "description": "Overall risk classification of the agent"
+      }
+    },
+
+    "safety_measures": {
+      "type": "array",
+      "required": false,
+      "rules": {
+        "item_type": "string",
+        "description": "List of safety measures implemented by the agent"
+      }
+    },
+
+    "restricted_actions": {
+      "type": "array",
+      "required": false,
+      "rules": {
+        "item_type": "string",
+        "description": "Actions the agent is not allowed to perform"
+      }
+    },
+
+    "evidence": {
+      "type": "array",
+      "required": false,
+      "rules": {
+        "item_type": "string",
+        "description": "Attestation IDs or references supporting the safety classification"
+      }
+    },
+
+    "issued_by": {
+      "type": "string",
+      "required": true,
+      "rules": {
+        "description": "Identity root of the issuer"
+      }
+    },
+
+    "issued_at": {
+      "type": "number",
+      "required": true,
+      "rules": {
+        "description": "Unix timestamp"
+      }
+    }
+  },
+
+  "rules": {
+    "validation": {
+      "risk_level_valid": "risk_level must match allowed_values"
+    }
+  }
+}
