@@ -75,6 +75,13 @@ Schemas, attestations, and integration SDKs will be published progressively.
 
 ## **Contributing**
 Narrow is designed as an open, extensible identity standard.  
+
+## 📌 Pinned Files
+
+- [Introduction](./introduction.md)
+- [Identity Root Specification](./specs/identity-root.md)
+- [Schema Library](./schemas/README.md)
+- [Architecture & Structure](./Structure/README.md)
 Contributions, discussions, and proposals are welcome once the public contribution guidelines are published.
 
 ---
