@@ -1,0 +1,69 @@
+{
+  "schema_id": "identity.device-fingerprint.v1",
+  "version": "v1",
+  "entity_type": "device",
+
+  "fields": {
+    "device_type": {
+      "type": "string",
+      "required": true,
+      "rules": {
+        "allowed_values": [
+          "mobile",
+          "desktop",
+          "server",
+          "iot",
+          "virtual"
+        ],
+        "description": "Type of device"
+      }
+    },
+
+    "fingerprint_hash": {
+      "type": "string",
+      "required": true,
+      "rules": {
+        "description": "Deterministic hash representing the device fingerprint"
+      }
+    },
+
+    "environment": {
+      "type": "object",
+      "required": false,
+      "rules": {
+        "description": "Optional environment metadata (OS, version, architecture)"
+      }
+    },
+
+    "capabilities": {
+      "type": "array",
+      "required": false,
+      "rules": {
+        "item_type": "string",
+        "description": "Optional list of device capabilities"
+      }
+    },
+
+    "issued_by": {
+      "type": "string",
+      "required": true,
+      "rules": {
+        "description": "Identity root of the issuer"
+      }
+    },
+
+    "issued_at": {
+      "type": "number",
+      "required": true,
+      "rules": {
+        "description": "Unix timestamp"
+      }
+    }
+  },
+
+  "rules": {
+    "validation": {
+      "fingerprint_required": "fingerprint_hash must be provided"
+    }
+  }
+}
