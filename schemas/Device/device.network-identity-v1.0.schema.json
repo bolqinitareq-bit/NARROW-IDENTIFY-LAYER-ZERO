@@ -1,0 +1,69 @@
+{
+  "schema_id": "device.network-identity.v1",
+  "version": "v1",
+  "entity_type": "device",
+
+  "fields": {
+    "network_type": {
+      "type": "string",
+      "required": true,
+      "rules": {
+        "allowed_values": [
+          "wifi",
+          "ethernet",
+          "cellular",
+          "satellite",
+          "mesh"
+        ],
+        "description": "Primary network interface type"
+      }
+    },
+
+    "mac_hash": {
+      "type": "string",
+      "required": false,
+      "rules": {
+        "description": "Hashed MAC address for privacy-preserving identification"
+      }
+    },
+
+    "ip_hash": {
+      "type": "string",
+      "required": false,
+      "rules": {
+        "description": "Hashed IP address (optional)"
+      }
+    },
+
+    "network_capabilities": {
+      "type": "array",
+      "required": false,
+      "rules": {
+        "item_type": "string",
+        "description": "Optional list of network capabilities (e.g., IPv6, NAT traversal)"
+      }
+    },
+
+    "issued_by": {
+      "type": "string",
+      "required": true,
+      "rules": {
+        "description": "Identity root of the issuer"
+      }
+    },
+
+    "issued_at": {
+      "type": "number",
+      "required": true,
+      "rules": {
+        "description": "Unix timestamp"
+      }
+    }
+  },
+
+  "rules": {
+    "validation": {
+      "network_type_valid": "network_type must match allowed_values"
+    }
+  }
+}
