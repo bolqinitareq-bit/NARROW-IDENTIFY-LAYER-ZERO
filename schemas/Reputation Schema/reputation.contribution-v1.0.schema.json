@@ -1,0 +1,71 @@
+{
+  "schema_id": "reputation.contribution.v1",
+  "version": "v1",
+  "entity_type": "human | device | agent | application",
+
+  "fields": {
+    "contribution_score": {
+      "type": "number",
+      "required": true,
+      "rules": {
+        "min": 0,
+        "max": 100,
+        "description": "Score representing contributions, productivity, or positive impact"
+      }
+    },
+
+    "contribution_type": {
+      "type": "string",
+      "required": false,
+      "rules": {
+        "allowed_values": [
+          "technical",
+          "operational",
+          "community",
+          "governance",
+          "support"
+        ],
+        "description": "Type of contribution made by the entity"
+      }
+    },
+
+    "references": {
+      "type": "array",
+      "required": false,
+      "rules": {
+        "item_type": "string",
+        "description": "List of attestation IDs or references supporting the contribution"
+      }
+    },
+
+    "context": {
+      "type": "string",
+      "required": false,
+      "rules": {
+        "description": "Domain or subsystem where the contribution applies"
+      }
+    },
+
+    "issued_by": {
+      "type": "string",
+      "required": true,
+      "rules": {
+        "description": "Identity root of the issuer"
+      }
+    },
+
+    "issued_at": {
+      "type": "number",
+      "required": true,
+      "rules": {
+        "description": "Unix timestamp"
+      }
+    }
+  },
+
+  "rules": {
+    "validation": {
+      "score_range": "contribution_score must be between 0 and 100"
+    }
+  }
+}
