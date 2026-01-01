@@ -60,6 +60,9 @@ Narrow is built to be the missing identity fabric for the next generation of dec
 
 /vision
     Long-term vision and protocol direction
+
+/investors
+    High-level summaries, pitch narrative, and investor-facing materials
 ```
 
 ---
