@@ -1,0 +1,71 @@
+{
+  "schema_id": "reputation.score.v1",
+  "version": "v1",
+  "entity_type": "human | device | agent | application",
+
+  "fields": {
+    "score": {
+      "type": "number",
+      "required": true,
+      "rules": {
+        "min": 0,
+        "max": 100,
+        "description": "Normalized reputation score between 0 and 100"
+      }
+    },
+
+    "category": {
+      "type": "string",
+      "required": false,
+      "rules": {
+        "allowed_values": [
+          "behavior",
+          "performance",
+          "trust",
+          "compliance",
+          "contribution"
+        ],
+        "description": "Optional category describing the type of reputation"
+      }
+    },
+
+    "context": {
+      "type": "string",
+      "required": false,
+      "rules": {
+        "description": "Domain or subsystem where the reputation applies"
+      }
+    },
+
+    "evidence": {
+      "type": "array",
+      "required": false,
+      "rules": {
+        "item_type": "string",
+        "description": "Optional list of attestation IDs or references used to derive the score"
+      }
+    },
+
+    "issued_by": {
+      "type": "string",
+      "required": true,
+      "rules": {
+        "description": "Identity root of the issuer"
+      }
+    },
+
+    "issued_at": {
+      "type": "number",
+      "required": true,
+      "rules": {
+        "description": "Unix timestamp"
+      }
+    }
+  },
+
+  "rules": {
+    "validation": {
+      "score_range": "score must be between 0 and 100"
+    }
+  }
+}
