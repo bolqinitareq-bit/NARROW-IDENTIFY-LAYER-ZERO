@@ -1,0 +1,56 @@
+{
+  "schema_id": "reputation.behavior.v1",
+  "version": "v1",
+  "entity_type": "human | device | agent | application",
+
+  "fields": {
+    "behavior_score": {
+      "type": "number",
+      "required": true,
+      "rules": {
+        "min": 0,
+        "max": 100,
+        "description": "Behavior-based score reflecting reliability, consistency, and conduct"
+      }
+    },
+
+    "signals": {
+      "type": "array",
+      "required": false,
+      "rules": {
+        "item_type": "string",
+        "description": "List of behavioral signals or attestation IDs used to derive the score"
+      }
+    },
+
+    "context": {
+      "type": "string",
+      "required": false,
+      "rules": {
+        "description": "Domain or subsystem where the behavior is evaluated"
+      }
+    },
+
+    "issued_by": {
+      "type": "string",
+      "required": true,
+      "rules": {
+        "description": "Identity root of the issuer"
+      }
+    },
+
+    "issued_at": {
+      "type": "number",
+      "required": true,
+      "rules": {
+        "description": "Unix timestamp"
+      }
+    }
+  },
+
+  "rules": {
+    "validation": {
+      "score_range": "behavior_score must be between 0 and 100"
+    }
+  }
+}
