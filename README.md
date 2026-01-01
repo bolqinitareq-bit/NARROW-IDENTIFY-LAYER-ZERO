@@ -55,7 +55,7 @@ Narrow is built to be the missing identity fabric for the next generation of dec
 /schemas
     Identity, device, reputation, and access-control schemas
 
-/docs
+/Structure
     Documentation, architecture notes, and investor materials
 
 /vision
