@@ -1,0 +1,55 @@
+{
+  "schema_id": "access.permission-flags.v1",
+  "version": "v1",
+  "entity_type": "human | device | agent | application",
+
+  "fields": {
+    "permissions": {
+      "type": "object",
+      "required": true,
+      "rules": {
+        "description": "Key-value map of permission flags",
+        "item_type": "boolean"
+      }
+    },
+
+    "context": {
+      "type": "string",
+      "required": false,
+      "rules": {
+        "description": "Optional context where these permissions apply"
+      }
+    },
+
+    "issued_by": {
+      "type": "string",
+      "required": true,
+      "rules": {
+        "description": "Identity root of the issuer"
+      }
+    },
+
+    "issued_at": {
+      "type": "number",
+      "required": true,
+      "rules": {
+        "description": "Unix timestamp"
+      }
+    },
+
+    "expires_at": {
+      "type": "number",
+      "required": false,
+      "rules": {
+        "description": "Optional expiration timestamp"
+      }
+    }
+  },
+
+  "rules": {
+    "validation": {
+      "permissions_not_empty": "permissions object must contain at least one flag",
+      "timestamps_valid": "issued_at must be <= expires_at if expires_at exists"
+    }
+  }
+}
