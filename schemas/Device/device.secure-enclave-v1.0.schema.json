@@ -1,0 +1,69 @@
+{
+  "schema_id": "device.secure-enclave.v1",
+  "version": "v1",
+  "entity_type": "device",
+
+  "fields": {
+    "enclave_type": {
+      "type": "string",
+      "required": true,
+      "rules": {
+        "allowed_values": [
+          "TPM",
+          "TEE",
+          "SecureElement",
+          "HSM",
+          "SGX"
+        ],
+        "description": "Type of secure enclave or hardware-backed security module"
+      }
+    },
+
+    "enclave_attestation": {
+      "type": "string",
+      "required": true,
+      "rules": {
+        "description": "Hash or reference to the enclave attestation proof"
+      }
+    },
+
+    "firmware_version": {
+      "type": "string",
+      "required": false,
+      "rules": {
+        "description": "Optional firmware or microcode version"
+      }
+    },
+
+    "capabilities": {
+      "type": "array",
+      "required": false,
+      "rules": {
+        "item_type": "string",
+        "description": "Security capabilities supported by the enclave"
+      }
+    },
+
+    "issued_by": {
+      "type": "string",
+      "required": true,
+      "rules": {
+        "description": "Identity root of the issuer"
+      }
+    },
+
+    "issued_at": {
+      "type": "number",
+      "required": true,
+      "rules": {
+        "description": "Unix timestamp"
+      }
+    }
+  },
+
+  "rules": {
+    "validation": {
+      "attestation_required": "enclave_attestation must be provided"
+    }
+  }
+}
