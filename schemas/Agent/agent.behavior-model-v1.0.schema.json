@@ -1,0 +1,73 @@
+{
+  "schema_id": "agent.behavior-model.v1",
+  "version": "v1",
+  "entity_type": "agent",
+
+  "fields": {
+    "model_type": {
+      "type": "string",
+      "required": true,
+      "rules": {
+        "allowed_values": [
+          "rule-based",
+          "ml-model",
+          "hybrid",
+          "deterministic"
+        ],
+        "description": "Type of behavior model used by the agent"
+      }
+    },
+
+    "model_reference": {
+      "type": "string",
+      "required": false,
+      "rules": {
+        "description": "Optional reference to the model version or architecture"
+      }
+    },
+
+    "behavior_signals": {
+      "type": "array",
+      "required": false,
+      "rules": {
+        "item_type": "string",
+        "description": "Signals or metrics used to evaluate agent behavior"
+      }
+    },
+
+    "adaptivity": {
+      "type": "string",
+      "required": false,
+      "rules": {
+        "allowed_values": [
+          "static",
+          "adaptive",
+          "self-learning"
+        ],
+        "description": "How the agent adapts or evolves over time"
+      }
+    },
+
+    "issued_by": {
+      "type": "string",
+      "required": true,
+      "rules": {
+        "description": "Identity root of the issuer"
+      }
+    },
+
+    "issued_at": {
+      "type": "number",
+      "required": true,
+      "rules": {
+        "description": "Unix timestamp"
+      }
+    }
+  },
+
+  "rules": {
+    "validation": {
+      "model_type_valid": "model_type must match allowed_values"
+    }
+  }
+}
