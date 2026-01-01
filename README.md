@@ -79,7 +79,7 @@ Narrow is designed as an open, extensible identity standard.
 ## 📌 Pinned Files
 
 - [Introduction](./introduction.md)
-- [Identity Root Specification](./specs/Narrow-layer-v2.0/identity-root.md)
+- [Identity Root](specs/Narrow-layer-v2.0/identity-root.md)
 - [Schema Library](./schemas/README.md)
 - [Architecture & Structure](./Structure/README.md)
 Contributions, discussions, and proposals are welcome once the public contribution guidelines are published.
