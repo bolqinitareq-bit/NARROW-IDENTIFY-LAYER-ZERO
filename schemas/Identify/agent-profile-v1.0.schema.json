@@ -1,0 +1,70 @@
+{
+  "schema_id": "identity.agent-profile.v1",
+  "version": "v1",
+  "entity_type": "agent",
+
+  "fields": {
+    "agent_type": {
+      "type": "string",
+      "required": true,
+      "rules": {
+        "allowed_values": [
+          "ai",
+          "automation",
+          "service",
+          "bot",
+          "hybrid"
+        ],
+        "description": "Classification of the agent"
+      }
+    },
+
+    "capabilities": {
+      "type": "array",
+      "required": false,
+      "rules": {
+        "item_type": "string",
+        "description": "Capabilities or functions the agent can perform"
+      }
+    },
+
+    "model_reference": {
+      "type": "string",
+      "required": false,
+      "rules": {
+        "description": "Optional reference to the agent’s model, version, or architecture"
+      }
+    },
+
+    "trust_signals": {
+      "type": "array",
+      "required": false,
+      "rules": {
+        "item_type": "string",
+        "description": "Attestation IDs or signals used to evaluate the agent"
+      }
+    },
+
+    "issued_by": {
+      "type": "string",
+      "required": true,
+      "rules": {
+        "description": "Identity root of the issuer"
+      }
+    },
+
+    "issued_at": {
+      "type": "number",
+      "required": true,
+      "rules": {
+        "description": "Unix timestamp"
+      }
+    }
+  },
+
+  "rules": {
+    "validation": {
+      "agent_type_valid": "agent_type must match allowed_values"
+    }
+  }
+}
