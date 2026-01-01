@@ -1,0 +1,61 @@
+{
+  "schema_id": "access.capability-token.v1",
+  "version": "v1",
+  "entity_type": "human | device | agent | application",
+
+  "fields": {
+    "capability": {
+      "type": "string",
+      "required": true,
+      "rules": {
+        "description": "Name of the granted capability"
+      }
+    },
+
+    "scope": {
+      "type": "string",
+      "required": false,
+      "rules": {
+        "description": "Optional domain or subsystem where the capability applies"
+      }
+    },
+
+    "constraints": {
+      "type": "object",
+      "required": false,
+      "rules": {
+        "description": "Optional constraints such as rate limits, resource bounds, or contextual rules"
+      }
+    },
+
+    "issued_by": {
+      "type": "string",
+      "required": true,
+      "rules": {
+        "description": "Identity root of the issuer"
+      }
+    },
+
+    "issued_at": {
+      "type": "number",
+      "required": true,
+      "rules": {
+        "description": "Unix timestamp"
+      }
+    },
+
+    "expires_at": {
+      "type": "number",
+      "required": false,
+      "rules": {
+        "description": "Optional expiration timestamp"
+      }
+    }
+  },
+
+  "rules": {
+    "validation": {
+      "timestamps_valid": "issued_at must be <= expires_at if expires_at exists"
+    }
+  }
+}
