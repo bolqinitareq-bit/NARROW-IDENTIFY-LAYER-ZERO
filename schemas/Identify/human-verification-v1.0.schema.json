@@ -1,0 +1,60 @@
+{
+  "schema_id": "identity.human-verification.v1",
+  "version": "v1",
+  "entity_type": "human",
+
+  "fields": {
+    "verification_level": {
+      "type": "string",
+      "required": true,
+      "rules": {
+        "allowed_values": [
+          "basic",
+          "strong",
+          "biometric",
+          "government-verified"
+        ],
+        "description": "Strength of human verification"
+      }
+    },
+
+    "method": {
+      "type": "string",
+      "required": false,
+      "rules": {
+        "description": "Optional description of the verification method (KYC, biometric, liveness, etc.)"
+      }
+    },
+
+    "evidence": {
+      "type": "array",
+      "required": false,
+      "rules": {
+        "item_type": "string",
+        "description": "Attestation IDs or references used to verify the human"
+      }
+    },
+
+    "issued_by": {
+      "type": "string",
+      "required": true,
+      "rules": {
+        "description": "Identity root of the issuer"
+      }
+    },
+
+    "issued_at": {
+      "type": "number",
+      "required": true,
+      "rules": {
+        "description": "Unix timestamp"
+      }
+    }
+  },
+
+  "rules": {
+    "validation": {
+      "level_valid": "verification_level must match allowed_values"
+    }
+  }
+}
