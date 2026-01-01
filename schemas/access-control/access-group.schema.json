@@ -1,0 +1,63 @@
+{
+  "schema_id": "access.group.v1",
+  "version": "v1",
+  "entity_type": "human | device | agent | application",
+
+  "fields": {
+    "group_id": {
+      "type": "string",
+      "required": true,
+      "rules": {
+        "description": "Unique identifier for the access group"
+      }
+    },
+
+    "members": {
+      "type": "array",
+      "required": true,
+      "rules": {
+        "item_type": "string",
+        "description": "List of identity roots belonging to the group"
+      }
+    },
+
+    "roles": {
+      "type": "array",
+      "required": false,
+      "rules": {
+        "item_type": "string",
+        "description": "Optional list of roles available within the group"
+      }
+    },
+
+    "metadata": {
+      "type": "object",
+      "required": false,
+      "rules": {
+        "description": "Optional descriptive metadata for the group"
+      }
+    },
+
+    "issued_by": {
+      "type": "string",
+      "required": true,
+      "rules": {
+        "description": "Identity root of the issuer"
+      }
+    },
+
+    "issued_at": {
+      "type": "number",
+      "required": true,
+      "rules": {
+        "description": "Unix timestamp"
+      }
+    }
+  },
+
+  "rules": {
+    "validation": {
+      "members_not_empty": "members array must contain at least one identity root"
+    }
+  }
+}
