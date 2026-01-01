@@ -1,0 +1,61 @@
+{
+  "schema_id": "device.virtual-instance.v1",
+  "version": "v1",
+  "entity_type": "device",
+
+  "fields": {
+    "instance_id": {
+      "type": "string",
+      "required": true,
+      "rules": {
+        "description": "Unique identifier for the virtual instance"
+      }
+    },
+
+    "provider": {
+      "type": "string",
+      "required": true,
+      "rules": {
+        "description": "Cloud or virtualization provider (AWS, Azure, GCP, local, etc.)"
+      }
+    },
+
+    "environment": {
+      "type": "object",
+      "required": false,
+      "rules": {
+        "description": "Optional metadata about OS, architecture, region, etc."
+      }
+    },
+
+    "ephemeral": {
+      "type": "boolean",
+      "required": false,
+      "rules": {
+        "description": "Indicates whether the instance is ephemeral or persistent"
+      }
+    },
+
+    "issued_by": {
+      "type": "string",
+      "required": true,
+      "rules": {
+        "description": "Identity root of the issuer"
+      }
+    },
+
+    "issued_at": {
+      "type": "number",
+      "required": true,
+      "rules": {
+        "description": "Unix timestamp"
+      }
+    }
+  },
+
+  "rules": {
+    "validation": {
+      "instance_id_required": "instance_id must be provided"
+    }
+  }
+}
