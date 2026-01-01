@@ -1,0 +1,70 @@
+{
+  "schema_id": "access.role-membership.v1",
+  "version": "v1",
+  "entity_type": "human | device | agent | application",
+
+  "fields": {
+    "role": {
+      "type": "string",
+      "required": true,
+      "rules": {
+        "allowed_values": [
+          "admin",
+          "moderator",
+          "member",
+          "viewer",
+          "service",
+          "agent"
+        ]
+      }
+    },
+
+    "scope": {
+      "type": "string",
+      "required": false,
+      "rules": {
+        "description": "Defines the domain or subsystem where the role applies"
+      }
+    },
+
+    "capabilities": {
+      "type": "array",
+      "required": false,
+      "rules": {
+        "item_type": "string",
+        "description": "Optional list of granular permissions"
+      }
+    },
+
+    "issued_by": {
+      "type": "string",
+      "required": true,
+      "rules": {
+        "description": "Identity root of the issuer"
+      }
+    },
+
+    "issued_at": {
+      "type": "number",
+      "required": true,
+      "rules": {
+        "description": "Unix timestamp"
+      }
+    },
+
+    "expires_at": {
+      "type": "number",
+      "required": false,
+      "rules": {
+        "description": "Optional expiration timestamp"
+      }
+    }
+  },
+
+  "rules": {
+    "validation": {
+      "role_must_be_valid": "role must match allowed_values",
+      "timestamps_valid": "issued_at must be <= expires_at if expires_at exists"
+    }
+  }
+}
